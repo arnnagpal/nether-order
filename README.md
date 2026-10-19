@@ -58,6 +58,20 @@ But what if one of those chunks isn't loaded yet? In that case the mod adds a te
 
 Every tree, glowstone blob and roll is still placed by the game's own code, the mod only picks *which* order the chunks finish in. The game could already finish them in that order, it just doesn't do so consistently. Same goes for the roots list: resetting it to its starting order is a state the game can land on too.
 
+## Does it actually work?
+
+We ran it through a nether decoration simulator with 10,000 bastions from the ranked league seed database (3,448 housing, 2,260 treasure, 2,156 bridge, 2,136 stables). The 11x11 chunks around each bastion got decorated 6 times in different orders, and every pair of runs was compared block by block, so 150,000 pairs in total.
+
+The wave runs use random orders that still follow the wave rule, so it covers any order the worker threads could end up in with the mod.
+
+| Order | Chunks that differ | Blocks that differ per pair | Pairs fully identical |
+|---|---|---|---|
+| No standardisation (any order) | 54.86% | 7,178 | 1 / 150,000 |
+| Mod 3 waves, shared roots picker | 1.65% | 13 | 100,744 / 150,000 |
+| Mod 3 waves + per-chunk picker reset | 0% | 0 | 150,000 / 150,000 |
+
+Waves on their own get rid of almost all of it, and the leftover bit is the shared roots picker. With both, every single pair came out identical.
+
 ## Does it slow anything down?
 
 Since a chunk has to wait for its lower `wave number` neighbours, and those neighbours have to wait for theirs, one chunk can end up pulling in up to 84 extra chunks, as far as 10 chunks away in the worst case.
