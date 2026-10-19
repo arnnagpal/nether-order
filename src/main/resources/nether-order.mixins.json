@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "dev.arnagpal.netherorder.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": ["ChunkGeneratorMixin", "ThreadedAnvilChunkStorageMixin", "WeightedBlockStateProviderMixin"],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

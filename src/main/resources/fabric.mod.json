@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "nether-order",
+  "version": "${version}",
+  "name": "Nether Order",
+  "description": "Decorates nether chunks in fixed mod-3 waves so every player gets the same trees and glowstone",
+  "environment": "*",
+  "mixins": ["nether-order.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.11.0",
+    "minecraft": "1.16.1"
+  }
+}
