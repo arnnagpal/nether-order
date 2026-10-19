@@ -2,7 +2,8 @@
   "required": true,
   "package": "dev.arnagpal.netherorder.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": ["ChunkGeneratorMixin", "ThreadedAnvilChunkStorageMixin", "WeightedBlockStateProviderMixin"],
+  "mixins": ["ChunkGeneratorMixin", "ThreadedAnvilChunkStorageMixin", "UtilMixin", "WeightedBlockStateProviderMixin"],
+  "client": ["VideoOptionsScreenMixin"],
   "injectors": {
     "defaultRequire": 1
   }
